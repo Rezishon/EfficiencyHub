@@ -1,0 +1,42 @@
+<div class="mockup-browser border border-base-300 m-5">
+  <div class="mockup-browser-toolbar flex-row justify-center">
+    <div class="input">RISELabs.com</div>
+  </div>
+  <div class="text-center font-extrabold text-4xl mt-20 my-10">
+    Everything you need to send at scale
+  </div>
+  <div class="flex flex-row justify-around p-5 mb-10 flex-wrap gap-15 lg:gap-0">
+    @for (item of featuresData(); track item.title) {
+      <div class="card bg-base-200 w-96 shadow-2xl">
+        <figure class="px-10 pt-10 self-start">
+          <svg [lucideIcon]="item.iconName" [size]="45"></svg>
+        </figure>
+        <div class="card-body text-justify">
+          <h2 class="card-title">{{ item.title }}</h2>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="flex justify-center my-30">
+    <div class="card w-[90%] lg:w-[60%] bg-zinc-800 card-xl shadow-2xl">
+      <div class="card-body text-center flex justify-center items-center gap-7">
+        <h2 class="card-title text-4xl">Ready to upgrade your delivery?</h2>
+        <p class="text-justify">
+          Get 10,000 free transactional emails per month. No credit card required.
+        </p>
+        <div class="justify-center card-actions">
+          <div class="flex flex-row items-center">
+            <button class="btn btn-primary btn-lg">
+              Create Free Email
+              <svg [lucideIcon]="sproutIcon" [size]="24"></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer />
+</div>
