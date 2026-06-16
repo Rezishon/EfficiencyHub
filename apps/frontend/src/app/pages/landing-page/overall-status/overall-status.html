@@ -1,0 +1,21 @@
+<div class="flex flex-col md:flex-row justify-around my-2">
+  @for (item of statusData(); track item.title) {
+    <div class="stats">
+      <div class="stat place-items-center flex flex-col justify-start">
+        <div class="stat-title">{{ item.title }}</div>
+        <div class="flex flex-row items-center gap-3">
+          <div class="flex flex-row items-center stat-value">
+            <om-number-ticker [countTo]="item.value" class="stat-value" [countDuration]="5000">
+            </om-number-ticker>
+            <p>{{ item.postfix }}</p>
+          </div>
+          <svg [lucideIcon]="item.iconName" [size]="28"></svg>
+        </div>
+
+        @if (item.description) {
+          <div class="stat-desc">{{ item.description }}</div>
+        }
+      </div>
+    </div>
+  }
+</div>
