@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start:frontend": "bun nx serve frontend",
-    "start:backend": "bun nx serve backend --runtime=bun",
-    "dev": "bun nx run-many --targets=serve --projects=frontend,backend"
+    "start:backend": "bun nx serve backend --runtime=bun --skip-nx-cache",
+    "dev": "bun nx run-many --targets=serve --projects=frontend,backend --skip-nx-cache"
   },
   "private": true,
   "dependencies": {
