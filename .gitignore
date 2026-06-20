@@ -1,6 +1,6 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-/apps/backend/dev.db
-/apps/backend/.env
+dev.db
+.env
 api.http
 
 # compiled output
