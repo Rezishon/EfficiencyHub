@@ -9,12 +9,12 @@
   "neverConnectToCloud": true,
   "targetDefaults": {
     "@angular/build:application": {
-      "cache": true,
+      "cache": false,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
     "@nx/eslint:lint": {
-      "cache": true,
+      "cache": false,
       "inputs": [
         "default",
         "^default",
@@ -25,7 +25,7 @@
       ]
     },
     "@nx/js:tsc": {
-      "cache": true,
+      "cache": false,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     }
