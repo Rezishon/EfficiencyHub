@@ -1,3 +1,10 @@
-export function sharedTypes(): string {
-  return 'shared-types';
+export interface ITodoList {
+  listName: string;
+  listItem?: ITodoItem;
+}
+export interface ITodoItem {
+  id: string;
+  header: string;
+  body: string;
+  status: boolean;
 }

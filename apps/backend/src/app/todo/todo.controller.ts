@@ -11,16 +11,6 @@ import { TodoList } from './dto/todo-list.dto';
 import { TodoItems } from './dto/todo-items.dto';
 import { TodoCreateList } from './dto/todo-create-list.dto';
 
-export interface ITodoList {
-  listName: string;
-  listItem?: ITodoItem;
-}
-export interface ITodoItem {
-  id: string;
-  header: string;
-  body: string;
-  status: boolean;
-}
 
 @Controller('todo')
 export class TodoController {
