@@ -26,4 +26,14 @@ export class TodoService {
     return result;
   }
 
+  async findOneList(listName: string) {
+    const result = await this.prisma.todoList.findUnique({
+      where: {
+        name: listName,
+      },
+    });
+    HasValue(result);
+    return result;
+  }
+
 }

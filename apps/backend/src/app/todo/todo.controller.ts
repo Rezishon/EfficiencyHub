@@ -41,4 +41,10 @@ export class TodoController {
     return plainToInstance(TodoList, result);
   }
 
+  @Get('list/:name')
+  async getList(@Param('name') name: string) {
+    const result = await this.todoService.findOneList(name);
+    return plainToInstance(TodoItems, result);
+  }
+
 }
