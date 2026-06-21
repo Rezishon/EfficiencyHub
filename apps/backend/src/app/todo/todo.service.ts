@@ -20,4 +20,10 @@ export class TodoService {
     });
   }
 
+  async findAllLists() {
+    const result = await this.prisma.todoList.findMany();
+    HasValue(result);
+    return result;
+  }
+
 }

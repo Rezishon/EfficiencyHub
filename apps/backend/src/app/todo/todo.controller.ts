@@ -35,4 +35,10 @@ export class TodoController {
     return plainToInstance(TodoCreateList, result);
   }
 
+  @Get('lists')
+  async getLists(): Promise<TodoList[]> {
+    const result = await this.todoService.findAllLists();
+    return plainToInstance(TodoList, result);
+  }
+
 }
