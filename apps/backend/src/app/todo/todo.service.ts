@@ -11,4 +11,13 @@ import { randomUUID } from 'crypto';
 export class TodoService {
   constructor(private prisma: PrismaService) {}
 
+  async createList(model: ITodoList) {
+    return await this.prisma.todoList.create({
+      data: {
+        name: model.listName,
+        items: [],
+      },
+    });
+  }
+
 }

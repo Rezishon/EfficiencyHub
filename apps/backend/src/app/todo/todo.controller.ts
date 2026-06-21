@@ -29,4 +29,10 @@ export class TodoController {
     private readonly todoService: TodoService,
   ) {}
 
+  @Post('list')
+  async createList(@Body() model: ITodoList) {
+    const result = await this.todoService.createList(model);
+    return plainToInstance(TodoCreateList, result);
+  }
+
 }
