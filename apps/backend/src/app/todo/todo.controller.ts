@@ -43,6 +43,11 @@ export class TodoController {
     return await this.todoService.addItem(model);
   }
 
+  @Patch('list/:name/item')
+  async updateItem(@Param('name') name: string, @Body() model: ITodoItem) {
+    return await this.todoService.updateItem(name, model);
+  }
+
   @Delete('list/:name/item/:id')
   async deleteItem(@Param('name') name: string, @Param('id') id: string) {
     return await this.todoService.deleteItem(name, id);
