@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateTodoDto } from './dto/update-todo.dto';
 import { PrismaService } from '../prisma.service';
-import { ITodoItem, ITodoList } from './todo.controller';
+import { ITodoItem, ITodoList } from '@shared-types';
 import { message } from '../response-type/response-type.dto';
 import { HasValue } from '../utils/error-handler';
 import { MessageHandler } from '../utils/message-handler';
