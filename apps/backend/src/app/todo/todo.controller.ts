@@ -52,4 +52,9 @@ export class TodoController {
     return await this.todoService.deleteList(name);
   }
 
+  @Post('item')
+  async addItem(@Body() model: ITodoList) {
+    return await this.todoService.addItem(model);
+  }
+
 }

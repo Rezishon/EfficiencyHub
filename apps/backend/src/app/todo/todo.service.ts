@@ -20,6 +20,33 @@ export class TodoService {
     });
   }
 
+  async addItem(model: ITodoList): Promise<message> {
+    const result = await this.prisma.todoList.findUnique({
+      where: {
+        name: model.listName,
+      },
+      select: {
+        items: true,
+      },
+    });
+    HasValue(result, model.listName);
+    model.listItem.id = randomUUID();
+
+    const updatedValue = [...((result.items ?? []) as unknown as ITodoItem[]), model.listItem];
+
+    await this.prisma.todoList.update({
+      where: {
+        name: model.listName,
+      },
+      data: {
+        name: model.listName,
+        items: updatedValue as any,
+      },
+    });
+
+    return MessageHandler('Data saved!');
+  }
+
   async findAllLists() {
     const result = await this.prisma.todoList.findMany();
     HasValue(result);
