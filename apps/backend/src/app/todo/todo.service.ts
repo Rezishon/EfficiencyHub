@@ -73,4 +73,29 @@ export class TodoService {
     return MessageHandler('Data deleted!');
   }
 
+  async deleteItem(listName: string, id: string) {
+    const result = await this.prisma.todoList.findUnique({
+      where: {
+        name: listName,
+      },
+      select: {
+        items: true,
+      },
+    });
+    HasValue(result);
+
+    const items = (result.items ?? []) as unknown as ITodoItem[];
+    const updatedValue = items.filter((item) => item.id !== id);
+
+    await this.prisma.todoList.update({
+      where: {
+        name: listName,
+      },
+      data: {
+        items: updatedValue as any,
+      },
+    });
+
+    return MessageHandler('Data deleted!');
+  }
 }

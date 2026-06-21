@@ -57,4 +57,9 @@ export class TodoController {
     return await this.todoService.addItem(model);
   }
 
+  @Delete('list/:name/item/:id')
+  async deleteItem(@Param('name') name: string, @Param('id') id: string) {
+    return await this.todoService.deleteItem(name, id);
+  }
+
 }
