@@ -1,7 +1,8 @@
+import { ITodoItem } from '@riseof-website/shared-types';
 import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()
-export class TodoItem {
+export class TodoItem implements ITodoItem {
   @Expose()
   id: string;
 
