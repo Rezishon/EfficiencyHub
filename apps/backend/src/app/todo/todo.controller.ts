@@ -1,0 +1,21 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from '@nestjs/common';
+import { TodoService } from './todo.service';
+import { CreateTodoDto } from './dto/create-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
+import { Todo } from './entities/todo.entity';
+import { plainToInstance } from 'class-transformer';
+import { message, ResponseType } from '../response-type/response-type.dto';
+import { TodoList } from './dto/todo-list.dto';
+import { TodoItems } from './dto/todo-items.dto';
+import { TodoCreateList } from './dto/todo-create-list.dto';
+
+@Controller('todo')
+export class TodoController {
+  constructor(
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    private readonly todoService: TodoService,
+  ) {}
+
+}
