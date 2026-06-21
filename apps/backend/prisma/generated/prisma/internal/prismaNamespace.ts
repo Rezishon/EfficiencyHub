@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  TodoList: 'TodoList',
   User: 'User'
 } as const
 
@@ -400,10 +401,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "todoList" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    TodoList: {
+      payload: Prisma.$TodoListPayload<ExtArgs>
+      fields: Prisma.TodoListFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TodoListFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TodoListFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>
+        }
+        findFirst: {
+          args: Prisma.TodoListFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TodoListFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>
+        }
+        findMany: {
+          args: Prisma.TodoListFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>[]
+        }
+        create: {
+          args: Prisma.TodoListCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>
+        }
+        createMany: {
+          args: Prisma.TodoListCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TodoListCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>[]
+        }
+        delete: {
+          args: Prisma.TodoListDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>
+        }
+        update: {
+          args: Prisma.TodoListUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>
+        }
+        deleteMany: {
+          args: Prisma.TodoListDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TodoListUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TodoListUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>[]
+        }
+        upsert: {
+          args: Prisma.TodoListUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TodoListPayload>
+        }
+        aggregate: {
+          args: Prisma.TodoListAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTodoList>
+        }
+        groupBy: {
+          args: Prisma.TodoListGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TodoListGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TodoListCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TodoListCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -514,6 +589,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const TodoListScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  items: 'items',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TodoListScalarFieldEnum = (typeof TodoListScalarFieldEnum)[keyof typeof TodoListScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -535,6 +621,30 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
 export const NullsOrder = {
   first: 'first',
   last: 'last'
@@ -553,6 +663,20 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -679,6 +803,7 @@ export type PrismaClientOptions = ({
   queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
+  todoList?: Prisma.TodoListOmit
   user?: Prisma.UserOmit
 }
 
