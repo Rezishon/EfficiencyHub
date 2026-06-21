@@ -36,4 +36,14 @@ export class TodoService {
     return result;
   }
 
+  async deleteList(listName: string) {
+    await this.prisma.todoList.delete({
+      where: {
+        name: listName,
+      },
+    });
+
+    return MessageHandler('Data deleted!');
+  }
+
 }
