@@ -1,0 +1,7 @@
+@if (toastService.toastStatus()) {
+  <div popover="hint" class="toast toast-top toast-center absolute top-10 z-9999">
+    <div class="alert alert-error font-extrabold">
+      <span>{{ toastService.toastMessage() }}</span>
+    </div>
+  </div>
+}
