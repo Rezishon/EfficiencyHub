@@ -113,7 +113,7 @@ export class TodoService {
     const isItemExist = items.find((item) => item.id === model.id);
     HasValue(isItemExist);
 
-    const updatedValue = items.map((item) => {
+    const updatedValues = items.map((item) => {
       if (item.id === model.id) {
         item = model;
         return item;
@@ -126,10 +126,10 @@ export class TodoService {
         name: listName,
       },
       data: {
-        items: updatedValue as any,
+        items: updatedValues as any,
       },
     });
 
-    return updatedValue;
+    return updatedValues;
   }
 }
