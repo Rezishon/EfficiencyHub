@@ -17,8 +17,8 @@ export class TodoController {
 
   @Post('list')
   async createList(@Body() model: ITodoList) {
-    const result = await this.todoService.createList(model);
-    return plainToInstance(TodoCreateList, result);
+    await this.todoService.createList(model);
+    return this.todoService.findAllLists();
   }
 
   @Get('lists')
