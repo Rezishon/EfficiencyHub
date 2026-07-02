@@ -2,6 +2,7 @@ export interface ITodoList {
   listName: string;
   listItem?: ITodoItem;
 }
+
 export interface ITodoItem {
   id: string;
   header: string;
@@ -20,4 +21,8 @@ export interface Imessage {
 export interface IApiTodoList {
   id: string;
   name: string;
+}
+
+export interface IApiTodoItems {
+  items: ITodoItem[];
 }
