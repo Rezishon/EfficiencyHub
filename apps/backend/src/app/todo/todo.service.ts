@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { ITodoItem, ITodoList } from '@shared-types';
-import { message } from '../response-type/response-type.dto';
+import { ITodoItem, ITodoList, Imessage } from '@shared-types';
 import { HasValue } from '../utils/error-handler';
 import { MessageHandler } from '../utils/message-handler';
 import { randomUUID } from 'crypto';
@@ -19,7 +18,7 @@ export class TodoService {
     });
   }
 
-  async addItem(model: ITodoList): Promise<message> {
+  async addItem(model: ITodoList): Promise<Imessage> {
     const result = await this.prisma.todoList.findUnique({
       where: {
         name: model.listName,
