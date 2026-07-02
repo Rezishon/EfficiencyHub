@@ -19,4 +19,11 @@ export class TodoService {
     );
   }
 
+  patchTodoItem(listName: string, item: ITodoItem) {
+    return this.http.patch<IResponseType<ITodoItem[]>>(
+      `${endpoints.TodoService.PatchTodoItem}/${listName}/item`,
+      item,
+    );
+  }
+
 }
