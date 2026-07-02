@@ -12,3 +12,7 @@ export interface ITodoItem {
 export interface IResponseType<T> {
   data: T;
 }
+
+export interface Imessage {
+  message: string;
+}
