@@ -16,3 +16,8 @@ export interface IResponseType<T> {
 export interface Imessage {
   message: string;
 }
+
+export interface IApiTodoList {
+  id: string;
+  name: string;
+}
