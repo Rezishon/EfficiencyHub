@@ -1,0 +1,44 @@
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+
+  <div class="drawer-content">
+    <label for="my-drawer-3" class="btn drawer-button lg:hidden"> Open drawer </label>
+
+    <div
+      cdkDropList
+      class="example-list flex flex-col items-center"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of todoItems(); track item.id) {
+        <div class="w-[70%]">
+          <app-todo-item (updatedItem)="onDataUpdate($event)" [itemData]="item"></app-todo-item>
+        </div>
+      }
+
+      <button class="btn mt-10">Add item</button>
+    </div>
+  </div>
+
+  <div class="drawer-side">
+    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 min-h-full p-4">
+      @for (item of todoLists(); track item.id) {
+        <li>
+          <button class="btn" (click)="getItemsOfList(item.name)">{{ item.name }}</button>
+        </li>
+      }
+
+      <button class="btn mt-10" (click)="addTodoListModal.openModal()">Add list</button>
+    </ul>
+  </div>
+</div>
+
+<app-dialog
+  #addTodoListModal
+  [id]="'add_todo_list_modal'"
+  [label]="'Name your list'"
+  [placeholder]="'new list name'"
+  (inputValue)="addNewTodoList($event)"
+></app-dialog>
+
+<app-toast />
