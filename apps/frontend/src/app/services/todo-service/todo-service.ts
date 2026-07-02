@@ -32,4 +32,10 @@ export class TodoService {
     });
   }
 
+  addTodoItem(listName: string, item: ITodoItem) {
+    return this.http.post<IResponseType<Imessage>>(endpoints.TodoService.AddTodoItem, {
+      listName: listName,
+      listItem: item,
+    });
+  }
 }
