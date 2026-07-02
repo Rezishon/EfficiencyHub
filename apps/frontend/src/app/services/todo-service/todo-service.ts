@@ -13,4 +13,10 @@ export class TodoService {
     return this.http.get<IResponseType<IApiTodoList[]>>(endpoints.TodoService.GetTodoLists);
   }
 
+  getTodoList(listName: string) {
+    return this.http.get<IResponseType<IApiTodoItems>>(
+      `${endpoints.TodoService.GetTodoList}/${listName}`,
+    );
+  }
+
 }
