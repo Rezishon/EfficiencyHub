@@ -26,4 +26,10 @@ export class TodoService {
     );
   }
 
+  addTodoList(listName: string) {
+    return this.http.post<IResponseType<IApiTodoList>>(endpoints.TodoService.AddTodoList, {
+      listName: listName,
+    });
+  }
+
 }
