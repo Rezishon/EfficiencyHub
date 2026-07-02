@@ -9,4 +9,8 @@ import { IApiTodoItems, IApiTodoList, Imessage, IResponseType, ITodoItem } from 
 export class TodoService {
   private http = inject(HttpClient);
 
+  getTodoLists() {
+    return this.http.get<IResponseType<IApiTodoList[]>>(endpoints.TodoService.GetTodoLists);
+  }
+
 }
