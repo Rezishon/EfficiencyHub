@@ -31,12 +31,25 @@ export class Dialog {
 
   dialogRef = viewChild<ElementRef<HTMLDialogElement>>('dialogRef');
 
-  formControl = new FormControl('', {
-    nonNullable: true,
-    validators: [Validators.required, Validators.minLength(1)],
-  });
+  syncFormControls() {
+    const items = this.inputArray();
+
+    this.controls = items.map((item) => item.control);
+
+    this.form.clear({ emitEvent: false });
+
+    this.controls.forEach((control) => {
+      this.form.push(control, { emitEvent: false });
+    });
+
+    this.form.reset();
+    this.form.markAsUntouched();
+    this.form.updateValueAndValidity();
+  }
 
   openModal() {
+    this.syncFormControls();
+
     this.dialogRef()?.nativeElement.showModal();
   }
 
