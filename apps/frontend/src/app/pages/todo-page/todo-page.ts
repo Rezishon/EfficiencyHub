@@ -73,4 +73,16 @@ export class TodoPage implements OnInit {
     });
   }
 
+  addNewTodoItem(event: Record<string, unknown>) {
+    const item: ITodoItem = {
+      id: '',
+      header: event[this.addItemDialogInputsArray[0].label] as string,
+      body: event[this.addItemDialogInputsArray[1].label] as string,
+      status: false,
+    };
+
+    this.todoService.addTodoItem(this.currentListName(), item).subscribe((_) => {
+      this.ngOnInit();
+    });
+  }
 }
