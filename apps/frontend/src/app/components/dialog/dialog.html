@@ -1,9 +1,18 @@
 <dialog #dialogRef [id]="id()" class="modal">
   <div class="modal-box flex flex-col items-center w-[30%] border-2 border-primary bg-base-200">
     <fieldset class="fieldset w-full max-w-[70%]">
-      <legend class="fieldset-legend">{{ label() }}</legend>
-      <input type="text" class="input" [placeholder]="placeholder()" [formControl]="formControl" />
-      <p class="label">{{ optionalLabel() }}</p>
+      <form [formArray]="form" (keydown.enter)="onEnterPress($event)">
+        @for (item of inputArray(); track $index) {
+          <legend class="fieldset-legend">{{ item.label }}</legend>
+          <input
+            [formControl]="item.control"
+            type="text"
+            class="input"
+            [placeholder]="item.placeholder ?? ''"
+          />
+          <p class="label">{{ item.optionalLabel }}</p>
+        }
+      </form>
     </fieldset>
 
     <form method="dialog">
