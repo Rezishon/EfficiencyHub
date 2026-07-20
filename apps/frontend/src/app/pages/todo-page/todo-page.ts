@@ -66,10 +66,11 @@ export class TodoPage implements OnInit {
     }
   }
 
-  addNewTodoList(listName: string) {
-    this.todoService.addTodoList(listName).subscribe((res) => {
+  addNewTodoList(event: Record<string, unknown>) {
+    const listName = event[this.addListDialogInputsArray[0].label] as string;
+    this.todoService.addTodoList(listName).subscribe((_) => {
       this.ngOnInit();
-      console.log(res);
     });
   }
+
 }
