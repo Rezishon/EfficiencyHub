@@ -18,6 +18,24 @@ export class TodoPage implements OnInit {
   todoLists = signal<IApiTodoList[]>([]);
   todoItems = signal<ITodoItem[]>([]);
 
+  addListDialogInputsArray: DialogInput[] = [
+    {
+      control: new FormControl('ListName', [Validators.required, Validators.maxLength(10)]),
+      label: 'List name',
+    },
+  ];
+
+  addItemDialogInputsArray: DialogInput[] = [
+    {
+      control: new FormControl('header', Validators.required),
+      label: 'header',
+    },
+    {
+      control: new FormControl('body', Validators.required),
+      label: 'body',
+    },
+  ];
+
   ngOnInit(): void {
     this.todoService.getTodoLists().subscribe((res) => {
       this.todoLists.set(res.data);
