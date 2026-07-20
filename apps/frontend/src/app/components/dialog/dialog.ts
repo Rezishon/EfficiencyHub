@@ -22,10 +22,12 @@ export class Dialog {
   toastService = inject(ToastService);
 
   id = input.required<string>();
-  label = input.required<string>();
-  optionalLabel = input<string>('');
-  placeholder = input<string>('');
-  inputValue = output<string>();
+  inputArray = input.required<DialogInput[]>();
+
+  controls: FormControl<DialogInput>[] = [];
+  form: FormArray<FormControl<DialogInput>> = new FormArray<FormControl<DialogInput>>([]);
+
+  outputValues = output<Record<string, unknown>>();
 
   dialogRef = viewChild<ElementRef<HTMLDialogElement>>('dialogRef');
 
