@@ -62,6 +62,11 @@ export class Dialog {
     });
   }
 
+  onEnterPress(event: Event): void {
+    event.preventDefault();
+    this.onSave();
+  }
+
   onSave() {
     if (this.formControl.valid) {
       this.inputValue.emit(this.formControl.value);
