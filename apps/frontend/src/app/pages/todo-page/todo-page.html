@@ -15,7 +15,7 @@
         </div>
       }
 
-      <button class="btn mt-10">Add item</button>
+      <button class="btn mt-10" (click)="addTodoItemModal.openModal()">Add item</button>
     </div>
   </div>
 
@@ -24,7 +24,9 @@
     <ul class="menu bg-base-200 min-h-full p-4">
       @for (item of todoLists(); track item.id) {
         <li>
-          <button class="btn" (click)="getItemsOfList(item.name)">{{ item.name }}</button>
+          <button class="btn max-w-35 min-w-20 text-wrap" (click)="getItemsOfList(item.name)">
+            {{ item.name }}
+          </button>
         </li>
       }
 
@@ -36,9 +38,15 @@
 <app-dialog
   #addTodoListModal
   [id]="'add_todo_list_modal'"
-  [label]="'Name your list'"
-  [placeholder]="'new list name'"
-  (inputValue)="addNewTodoList($event)"
+  [inputArray]="addListDialogInputsArray"
+  (outputValues)="addNewTodoList($event)"
+></app-dialog>
+
+<app-dialog
+  #addTodoItemModal
+  [id]="'add_todo_item_modal'"
+  [inputArray]="addItemDialogInputsArray"
+  (outputValues)="addNewTodoItem($event)"
 ></app-dialog>
 
 <app-toast />
