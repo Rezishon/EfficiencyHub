@@ -1,5 +1,5 @@
-import { Component, ElementRef, inject, input, output, signal, viewChild } from '@angular/core';
-import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { Component, ElementRef, inject, input, output, viewChild } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormArray } from '@angular/forms';
 import { LucideCircleX } from '@lucide/angular';
 import { timer } from 'rxjs';
 import { ToastService } from '../../services/toast/toast-service';
