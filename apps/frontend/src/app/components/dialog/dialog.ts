@@ -56,10 +56,9 @@ export class Dialog {
   closeModal() {
     this.dialogRef()?.nativeElement.close();
 
-    timer(1000).subscribe(() => {
-      this.formControl.reset('');
-      this.formControl.markAsUntouched();
-      this.formControl.markAsPristine();
+    timer(700).subscribe(() => {
+      this.form.reset();
+      this.form.markAsUntouched();
     });
   }
 
