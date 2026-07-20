@@ -68,14 +68,42 @@ export class Dialog {
   }
 
   onSave() {
-    if (this.formControl.valid) {
-      this.inputValue.emit(this.formControl.value);
+    if (this.form.valid) {
+      const dataPayload = this.inputArray().reduce(
+        (record, item) => {
+          record[item.label] = item.control.value;
+          return record;
+        },
+        {} as Record<string, unknown>,
+      );
+
+      this.outputValues.emit(dataPayload);
 
       this.closeModal();
     } else {
+      let errorMessage = 'Invalid input';
       this.closeModal();
+
+      const invalidItem = this.inputArray().find((item) => item.control.invalid);
+
+      if (invalidItem) {
+        const control = invalidItem.control;
+        const label = invalidItem.label;
+
+        if (control.hasError('required')) {
+          errorMessage = `${label} should not be empty`;
+        } else if (control.hasError('maxlength')) {
+          errorMessage = `${label} should not be more than 10 characters`;
+        } else if (control.hasError('minlength')) {
+          errorMessage = `${label} should not be less than 10 characters`;
+        }
+      }
+
       timer(100).subscribe(() => {
-        this.toastService.toasterOn('List name should not be empty');
+        this.toastService.toasterOn(errorMessage);
+
+        this.form.markAllAsTouched();
+        this.form.updateValueAndValidity();
       });
     }
   }
