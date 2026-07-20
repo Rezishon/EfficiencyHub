@@ -5,6 +5,13 @@ import { timer } from 'rxjs';
 import { ToastService } from '../../services/toast/toast-service';
 import { Toast } from '../toast/Toast';
 
+export interface DialogInput {
+  control: FormControl;
+  label: string;
+  optionalLabel?: string;
+  placeholder?: string;
+}
+
 @Component({
   selector: 'app-dialog',
   imports: [LucideCircleX, ReactiveFormsModule, Toast],
