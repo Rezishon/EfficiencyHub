@@ -3,8 +3,9 @@ import { TodoService } from '../../services/todo-service/todo-service';
 import { IApiTodoList, ITodoItem } from '@riseof-website/shared-types';
 import { TodoItem } from '../../components/todo-item/todo-item';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Dialog } from '../../components/dialog/dialog';
+import { Dialog, DialogInput } from '../../components/dialog/dialog';
 import { Toast } from '../../components/toast/Toast';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-page',
