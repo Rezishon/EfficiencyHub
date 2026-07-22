@@ -6,10 +6,16 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
 import { Dialog, DialogInput } from '../../components/dialog/dialog';
 import { Toast } from '../../components/toast/Toast';
 import { FormControl, Validators } from '@angular/forms';
+import { ContextMenu } from '../../components/context-menu/ContextMenu';
+import { timer } from 'rxjs';
+import {
+  ContextMenuDirective,
+  position,
+} from '../../directives/context-menu/context-menu.directive';
 
 @Component({
   selector: 'app-todo-page',
-  imports: [TodoItem, CdkDropList, Dialog, Toast],
+  imports: [TodoItem, CdkDropList, Dialog, Toast, ContextMenu, ContextMenuDirective],
   templateUrl: './todo-page.html',
   styleUrl: './todo-page.css',
 })
@@ -18,6 +24,8 @@ export class TodoPage implements OnInit {
   private currentListName = signal<string>('');
   todoLists = signal<IApiTodoList[]>([]);
   todoItems = signal<ITodoItem[]>([]);
+  displayContextMenu = signal<boolean>(false);
+  contextMenuPosition = signal<position>({ x: 0, y: 0 });
 
   addListDialogInputsArray: DialogInput[] = [
     {
@@ -84,6 +92,13 @@ export class TodoPage implements OnInit {
 
     this.todoService.addTodoItem(this.currentListName(), item).subscribe((_) => {
       this.ngOnInit();
+    });
+  }
+
+  rightClick(event: position) {
+    timer(1).subscribe(() => {
+      this.contextMenuPosition.set(event);
+      this.displayContextMenu.set(true);
     });
   }
 }

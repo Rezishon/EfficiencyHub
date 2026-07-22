@@ -31,6 +31,10 @@
       }
 
       <button class="btn mt-10" (click)="addTodoListModal.openModal()">Add list</button>
+
+      <button appContextMenu (rightClickPosition)="rightClick($event)" class="btn mt-10">
+        test directives
+      </button>
     </ul>
   </div>
 </div>
@@ -50,3 +54,9 @@
 ></app-dialog>
 
 <app-toast />
+
+<app-context-menu
+  [displayComponent]="displayContextMenu()"
+  (displayComponentChange)="displayContextMenu.set($event)"
+  [componentPosition]="contextMenuPosition()"
+></app-context-menu>
