@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { TodoService } from '../../services/todo-service/todo-service';
 import { IApiTodoList, ITodoItem } from '@riseof-website/shared-types';
 import { TodoItem } from '../../components/todo-item/todo-item';
-import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Dialog, DialogInput } from '../../components/dialog/dialog';
 import { Toast } from '../../components/toast/Toast';
 import { FormControl, Validators } from '@angular/forms';
@@ -77,7 +77,8 @@ export class TodoPage implements OnInit {
 
   addNewTodoList(event: Record<string, unknown>) {
     const listName = event[this.addListDialogInputsArray[0].label] as string;
-    this.todoService.addTodoList(listName).subscribe((_) => {
+
+    this.todoService.addTodoList(listName).subscribe(() => {
       this.ngOnInit();
     });
   }
@@ -90,7 +91,7 @@ export class TodoPage implements OnInit {
       status: false,
     };
 
-    this.todoService.addTodoItem(this.currentListName(), item).subscribe((_) => {
+    this.todoService.addTodoItem(this.currentListName(), item).subscribe(() => {
       this.ngOnInit();
     });
   }
