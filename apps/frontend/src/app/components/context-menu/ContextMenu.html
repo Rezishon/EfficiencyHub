@@ -1,0 +1,14 @@
+@if (displayComponent()) {
+  <div
+    class="menu-popup bg-base-200 border p-4 shadow-lg fixed mt-2 z-9999"
+    [style.top.px]="componentPosition()?.y"
+    [style.left.px]="componentPosition()?.x"
+    appClickOutside
+    (clickOutside)="onClickOutside()"
+  >
+    <ul>
+      <li>Menu Item 1</li>
+      <li>Menu Item 2</li>
+    </ul>
+  </div>
+}
